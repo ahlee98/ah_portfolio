@@ -187,6 +187,26 @@
       max-width: 720px;
     }
 
+    .resume-btn {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 32px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--dark);
+      text-decoration: none;
+      border: 1px solid rgba(0,0,0,0.18);
+      padding: 10px 22px;
+      border-radius: 100px;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .resume-btn:hover {
+      background: var(--dark);
+      color: var(--bg);
+      border-color: var(--dark);
+    }
+
     /* ── WORK ── */
     #experience {
       padding: 0 28px 100px;
@@ -426,9 +446,44 @@
     .delay-2 { transition-delay: 0.22s; }
     .delay-3 { transition-delay: 0.34s; }
     .delay-4 { transition-delay: 0.46s; }
+
+    /* ── MOBILE BLOCK ── */
+    @media (max-width: 1024px) {
+      .mobile-block { display: flex !important; }
+    }
+    .mobile-block {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--dark, #1b1b1f);
+      z-index: 99999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+      gap: 20px;
+    }
+    .mobile-block-icon { font-size: 48px; }
+    .mobile-block h2 {
+      font-size: 22px;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: -.02em;
+    }
+    .mobile-block p {
+      font-size: 15px;
+      color: #7d85a0;
+      line-height: 1.7;
+    }
   </style>
 </head>
 <body>
+<div class="mobile-block">
+  <div class="mobile-block-icon">🖥️</div>
+  <h2>데스크톱 환경에서 확인해주세요</h2>
+  <p>이 포트폴리오는 데스크톱 브라우저에 최적화되어 있습니다.<br>PC 또는 노트북에서 접속해 주세요.</p>
+</div>
 
 <div id="cursor">
   <div class="cursor-text" id="cursor-label">I'm Product Designer Ahhyun!</div>
@@ -459,6 +514,7 @@
     리서치부터 전략, 디자인까지<br>
     전 과정에 참여하는 Product Designer입니다.
   </p>
+  <a class="resume-btn reveal delay-2" href="resume.html">경력기술서 보기 →</a>
 </section>
 
 <!-- ══════════════════════════════════════
