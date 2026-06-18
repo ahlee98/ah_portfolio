@@ -23,12 +23,13 @@
       --white: #ffffff;
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; background: #f5f6f7; }
 
     body {
       font-family: 'Pretendard', -apple-system, sans-serif;
       background: #f5f6f7;
       width: 1920px;
+      margin: 0 auto;
     }
 
     /* ── SCROLL REVEAL ── */
@@ -776,7 +777,7 @@
     .ft-right { font-size: 14px; text-align: right; }
 
     /* ── MOBILE BLOCK ── */
-    @media (max-width: 1024px) {
+    @media (max-width: 768px) {
       .mobile-block { display: flex !important; }
     }
     .mobile-block {
@@ -1120,9 +1121,10 @@ window.scrollTo(0, 0);
 
 // ── 0. PROPORTIONAL ZOOM (1920px 기준 비율 축소) ──
 function applyZoom() {
-  document.body.style.zoom = window.innerWidth / 1920;
+  document.body.style.zoom = Math.min(window.innerWidth / 1920, 1);
 }
 applyZoom();
+window.addEventListener('resize', applyZoom);
 
 // ── Progress bar ──
 const progressBar = document.getElementById('progress');
