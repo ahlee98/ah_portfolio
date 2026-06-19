@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이아현 — 경력기술서</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  <style>
+    :root {
+      --bg: #f7f7f5;
+      --dark: #111111;
+      --mid: #888888;
+      --light: #e4e4e0;
+      --accent: #2563eb;
+      --font: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--dark);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    /* ── MAIN NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 0 32px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(247,247,245,0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      z-index: 200;
+      transition: border-color 0.3s;
+    }
+    nav.scrolled { border-color: var(--light); }
+    .nav-name {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: var(--dark);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-name::before {
+      content: '←';
+      font-size: 13px;
+      color: var(--mid);
+      transition: transform 0.2s;
+    }
+    .nav-name:hover::before { transform: translateX(-3px); }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--dark); }
+
+    /* ── COMPANY SCROLLSPY BAR ── */
+    #company-spy {
+      position: fixed;
+      top: 64px;
+      left: 0; right: 0;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      padding: 0 32px;
+      gap: 6px;
+      background: rgba(247,247,245,0.95);
+      border-bottom: 1px solid var(--light);
+      z-index: 190;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    #company-spy::-webkit-scrollbar { display: none; }
+    #company-spy.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .spy-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-right: 8px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .spy-btn {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--mid);
+      background: transparent;
+      border: 1px solid var(--light);
+      padding: 4px 14px;
+      border-radius: 100px;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      text-decoration: none;
+      transition: background 0.18s, color 0.18s, border-color 0.18s;
+    }
+    .spy-btn:hover { color: var(--dark); border-color: #bbb; }
+    .spy-btn.active {
+      background: var(--dark);
+      color: #fff;
+      border-color: var(--dark);
+    }
+
+    /* ── PAGE WRAPPER ── */
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ── HEADER ── */
+    #header {
+      padding-top: 130px;
+      padding-bottom: 88px;
+      border-bottom: 1px solid var(--light);
+    }
+    .name-row {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+    .name-ko {
+      font-size: 56px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--dark);
+      line-height: 1;
+    }
+    .name-titles {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .name-title {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: var(--accent);
+    }
+    .name-title-sep {
+      width: 1px;
+      height: 14px;
+      background: var(--light);
+    }
+    .contact-grid {
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 10px 24px;
+      align-items: center;
+    }
+    .contact-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .contact-value {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--dark);
+    }
+
+    /* ── SECTION ── */
+    .section {
+      padding: 88px 0;
+      border-bottom: 1px solid var(--light);
+    }
+    .section:last-child { border-bottom: none; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 48px;
+    }
+
+    /* ── TABLE ── */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .data-table th {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-align: left;
+      padding: 12px 20px 12px 0;
+      border-bottom: 1px solid var(--light);
+      white-space: nowrap;
+    }
+    .data-table td {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--dark);
+      padding: 20px 20px 20px 0;
+      border-bottom: 1px solid var(--light);
+      vertical-align: top;
+      line-height: 1.7;
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .td-mid { color: var(--mid) !important; }
+    .td-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--mid);
+      border: 1px solid var(--light);
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+
+    /* ── CAREER DETAIL BLOCKS ── */
+
+    /* Company banner — visually dominant chapter break */
+    .company-banner {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      margin-top: 56px;
+      padding: 28px 32px;
+      background: var(--dark);
+      border-radius: 16px;
+      color: #fff;
+    }
+    .company-banner:first-of-type { margin-top: 0; }
+
+    .cb-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 180px;
+      padding-right: 32px;
+      border-right: 1px solid rgba(255,255,255,0.12);
+      margin-right: 32px;
+    }
+    .cb-period-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 6px;
+    }
+    .cb-period-val {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.5;
+    }
+    .cb-right { flex: 1; }
+    .cb-company {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.025em;
+      line-height: 1.25;
+      margin-bottom: 6px;
+    }
+    .cb-role {
+      font-size: 15px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.55);
+    }
+
+    /* Projects inside a company */
+    .projects-wrap {
+      margin-top: 0;
+      padding-left: 0;
+    }
+
+    .project-block {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 0 52px;
+      padding: 36px 0;
+      border-bottom: 1px solid var(--light);
+    }
+    .project-block:last-child { border-bottom: none; }
+
+    .pb-idx {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      padding-top: 4px;
+      line-height: 1.5;
+    }
+    .pb-content {}
+    .pb-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--dark);
+      letter-spacing: -0.02em;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+    .pb-period {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--mid);
+      margin-bottom: 16px;
+    }
+    .pb-desc {
+      font-size: 15px;
+      font-weight: 400;
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .pb-group {
+      margin-bottom: 18px;
+    }
+    .pb-group:last-child { margin-bottom: 0; }
+    .pb-group-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 10px;
+    }
+    .pb-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .pb-list li {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--dark);
+      line-height: 1.7;
+      padding-left: 18px;
+      position: relative;
+    }
+    .pb-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--light);
+    }
+
+    /* ── SKILL GRID ── */
+    .skill-row {
+      display: grid;
+      grid-template-columns: 180px 220px 80px 1fr;
+      gap: 0 32px;
+      padding: 22px 0;
+      align-items: start;
+      border-bottom: 1px solid var(--light);
+    }
+    .skill-row:last-child { border-bottom: none; }
+    .skill-cat {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--dark);
+      padding-top: 2px;
+    }
+    .skill-tools {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--mid);
+      line-height: 1.7;
+    }
+    .skill-level {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--mid);
+      padding-top: 3px;
+    }
+    .skill-level.high { color: var(--dark); font-weight: 600; }
+    .skill-desc {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--mid);
+      line-height: 1.75;
+    }
+
+    /* ── PUB ITEM ── */
+    .pub-item {
+      display: grid;
+      grid-template-columns: 200px 1fr auto;
+      gap: 0 52px;
+      padding: 28px 0;
+      align-items: start;
+      border-top: 1px solid var(--light);
+    }
+    .pub-item:first-child { border-top: none; }
+    .pub-date { font-size: 14px; font-weight: 400; color: var(--mid); padding-top: 2px; line-height: 1.6; }
+    .pub-title { font-size: 16px; font-weight: 500; color: var(--dark); letter-spacing: -0.015em; line-height: 1.55; margin-bottom: 6px; }
+    .pub-meta { font-size: 14px; font-weight: 400; color: var(--mid); }
+    .pub-badge-wrap { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; padding-top: 3px; }
+
+    /* ── ACTIVITY ── */
+    .act-row {
+      display: grid;
+      grid-template-columns: 200px 1fr 1fr auto;
+      gap: 0 32px;
+      padding: 22px 0;
+      align-items: start;
+      border-top: 1px solid var(--light);
+    }
+    .act-row:first-child { border-top: none; }
+    .act-date { font-size: 14px; font-weight: 400; color: var(--mid); padding-top: 2px; line-height: 1.6; }
+    .act-name { font-size: 15px; font-weight: 600; color: var(--dark); line-height: 1.5; }
+    .act-detail {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--mid);
+      line-height: 1.75;
+    }
+    .act-detail li { list-style: none; padding-left: 14px; position: relative; }
+    .act-detail li::before { content: '·'; position: absolute; left: 0; }
+    .act-type {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--mid);
+      white-space: nowrap;
+      text-align: right;
+      padding-top: 3px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 36px 32px;
+      border-top: 1px solid var(--light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .ft-name { font-size: 14px; font-weight: 500; color: var(--mid); }
+    .ft-right { font-size: 13px; color: var(--mid); }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1);
+    }
+    .reveal.in { opacity: 1; transform: none; }
+    .delay-1 { transition-delay: 0.08s; }
+    .delay-2 { transition-delay: 0.16s; }
+    .delay-3 { transition-delay: 0.24s; }
+    .delay-4 { transition-delay: 0.32s; }
+
+    @media (max-width: 900px) {
+      .name-ko { font-size: 40px; }
+      .project-block, .pub-item { grid-template-columns: 1fr; gap: 12px 0; }
+      .skill-row { grid-template-columns: 1fr 1fr; }
+      .act-row { grid-template-columns: 1fr 1fr; gap: 8px 16px; }
+      .nav-links { display: none; }
+      #company-spy { top: 64px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <a class="nav-name" href="index.html">Portfolio</a>
+  <ul class="nav-links">
+    <li><a href="#education">학력</a></li>
+    <li><a href="#career">경력</a></li>
+    <li><a href="#career-detail">경력기술서</a></li>
+    <li><a href="#publications">논문</a></li>
+    <li><a href="#activities">활동</a></li>
+    <li><a href="#skills">활용능력</a></li>
+  </ul>
+</nav>
+
+<!-- ── COMPANY SCROLLSPY ── -->
+<div id="company-spy">
+  <span class="spy-label">경력기술서</span>
+  <a class="spy-btn" href="#cb-vinyl">바이널씨</a>
+  <a class="spy-btn" href="#cb-sde">SDE Lab.</a>
+  <a class="spy-btn" href="#cb-dcide">더씨이드</a>
+  <a class="spy-btn" href="#cb-dotsum">덧셈컴퍼니</a>
+</div>
+
+<div class="page">
+
+  <!-- ── HEADER ── -->
+  <header id="header">
+    <div class="header-inner">
+      <div class="header-left">
+        <div class="name-row">
+          <h1 class="name-ko reveal">이아현</h1>
+          <div class="name-titles reveal delay-1">
+            <span class="name-title">UX Designer</span>
+            <span class="name-title-sep"></span>
+            <span class="name-title">UX Consultant</span>
+          </div>
+        </div>
+
+        <div class="contact-grid reveal delay-2">
+          <span class="contact-label">Birth.</span>
+          <span class="contact-value">1998. 11. 03 (27세)</span>
+          <span class="contact-label">Email.</span>
+          <span class="contact-value">ahyun98@naver.com</span>
+          <span class="contact-label">Phone.</span>
+          <span class="contact-value">010-5176-6386</span>
+          <span class="contact-label">Address.</span>
+          <span class="contact-value">서울특별시 강남구 도곡2동</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════
+       학력사항
+  ══════════════════════════════════ -->
+  <section class="section" id="education">
+    <p class="section-label reveal">학력사항</p>
+
+    <table class="data-table reveal delay-1">
+      <thead>
+        <tr>
+          <th>기간</th>
+          <th>학교</th>
+          <th>학과</th>
+          <th>졸업여부</th>
+          <th>학점 (GPA)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2022.03 ~ 2024.02</td>
+          <td>홍익대학교 국제디자인전문대학원</td>
+          <td>디지털미디어디자인 전공</td>
+          <td>졸업</td>
+          <td>4.5/4.5</td>
+        </tr>
+        <tr>
+          <td>2017.03 ~ 2022.02</td>
+          <td>가천대학교</td>
+          <td>시각디자인 전공</td>
+          <td>졸업</td>
+          <td>4.18 / 4.5</td>
+        </tr>
+        <tr>
+          <td>2014.03 ~ 2017.02</td>
+          <td>숙명여자고등학교</td>
+          <td class="td-mid">—</td>
+          <td>졸업</td>
+          <td class="td-mid">—</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ══════════════════════════════════
+       경력사항
+  ══════════════════════════════════ -->
+  <section class="section" id="career">
+    <p class="section-label reveal">경력사항</p>
+
+    <table class="data-table reveal delay-1">
+      <thead>
+        <tr>
+          <th>근무기간</th>
+          <th>근무회사</th>
+          <th>부서 / 직위</th>
+          <th>담당 직무</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2025.04. 01 ~ 현재</td>
+          <td>바이널씨</td>
+          <td>UX 컨설팅 / PA</td>
+          <td>UX컨설턴트</td>
+        </tr>
+        <tr>
+          <td>2024. 05 ~ 2025. 03</td>
+          <td>홍익대학교 SDE Lab.</td>
+          <td>선임연구원</td>
+          <td class="td-mid">—</td>
+        </tr>
+        <tr>
+          <td>2024. 01 ~ 2024. 10</td>
+          <td>더씨이드</td>
+          <td>보조연구원 (프리랜서)</td>
+          <td>디자인 리서치</td>
+        </tr>
+        <tr>
+          <td>2023. 08 ~ 2023. 09</td>
+          <td>덧셈컴퍼니</td>
+          <td>디자인 (프리랜서)</td>
+          <td>UX/UI 디자이너</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ══════════════════════════════════
+       경력 기술서
+  ══════════════════════════════════ -->
+  <section class="section" id="career-detail">
+    <p class="section-label reveal">경력 기술서</p>
+
+    <!-- 바이널씨 -->
+    <div id="cb-vinyl" class="reveal">
+      <div class="company-banner">
+        <div class="cb-left">
+          <p class="cb-period-label">근무기간</p>
+          <p class="cb-period-val">2025. 04. 01<br>~ 현재</p>
+        </div>
+        <div class="cb-right">
+          <p class="cb-company">바이널씨</p>
+          <p class="cb-role">UX 컨설턴트 (PA)</p>
+        </div>
+      </div>
+
+      <div class="projects-wrap">
+
+      <!-- 하나은행 아이부자 -->
+      <div class="project-block">
+        <p class="pb-idx">Project 01</p>
+        <div class="pb-content">
+          <p class="pb-title">하나은행 아이부자 UX 컨설팅</p>
+          <p class="pb-period">2026. 03 ~ 현재</p>
+          <p class="pb-desc">하나은행 어린이 금융 앱 아이부자의 사용자 이탈 문제를 해결하기 위해 UX 컨설팅 업무를 수행했습니다. 기존 고객사가 생각하던 UI 개선 중심의 접근에서 벗어나 '아이부자만의 차별적 가치 부재'를 근본 문제로 재정의했습니다. 최종적으로 '자산 견습가 플랫폼'으로의 포지셔닝 전략과 연령별 점진적 기능 확장 구조를 반영한 화면 설계안을 도출했습니다.</p>
+          <div class="pb-group">
+            <p class="pb-group-title">주요 업무</p>
+            <ul class="pb-list">
+              <li>데스크 리서치·이해관계자 인터뷰를 통한 서비스 문제 정의 및 UX 전략 방향성 도출</li>
+              <li>연령별 금융 경험 구조 및 자녀-부모 간 상호작용 플로우 설계</li>
+              <li>협력 설계 워크숍 진행 및 UX 전략을 반영한 주요 화면 와이어프레임 설계</li>
+              <li>AI를 활용한 프로토타입 제작 및 가설 검증</li>
+            </ul>
+          </div>
+          <div class="pb-group">
+            <p class="pb-group-title">업무 성과</p>
+            <ul class="pb-list">
+              <li>UI 개선 중심의 접근에서 벗어나 '자산 견습가 플랫폼'으로의 서비스 포지셔닝 전략 수립 및 고객사 설득</li>
+              <li>AI를 업무 인프라로 도입해 소규모 TF 내 리서치·설계·검증 프로세스 효율화</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- KB 퇴직연금 -->
+      <div class="project-block">
+        <p class="pb-idx">Project 02</p>
+        <div class="pb-content">
+          <p class="pb-title">KB 퇴직연금 비대면 채널 혁신 추진 컨설팅</p>
+          <p class="pb-period">2026. 01 ~ 2026. 03</p>
+          <p class="pb-desc">KB 퇴직연금 서비스의 비대면 채널 혁신을 목표로, KB스타뱅킹 및 인터넷뱅킹 전반의 사용자 경험(UX) 전략 수립과 와이어프레임 설계를 수행했습니다.</p>
+          <div class="pb-group">
+            <p class="pb-group-title">주요 업무</p>
+            <ul class="pb-list">
+              <li>자사·타사 서비스 비교 분석(Gap Analysis)을 통한 UX 전략 방향성 도출</li>
+              <li>퇴직연금 서비스 전반의 이용 흐름 및 사용자 여정 구조 정의</li>
+              <li>UX전략을 반영한 주요 화면 와이어프레임 설계</li>
+            </ul>
+          </div>
+          <div class="pb-group">
+            <p class="pb-group-title">업무 성과</p>
+            <ul class="pb-list">
+              <li>공급자 중심 구조에서 벗어나, 사용자의 '이해–판단–실행' 흐름을 중심으로 한 퇴직연금 UX 전략 수립</li>
+              <li>비즈니스 관점에서 도출된 화면 정의서를 UX 관점에서 재해석·보완</li>
+              <li>KB스타뱅킹 퇴직연금 서비스 전반 화면(App·Web)에 대한 와이어프레임 설계</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- KB국민 컨설팅 운영 -->
+      <div class="project-block">
+        <p class="pb-idx">Project 03</p>
+        <div class="pb-content">
+          <p class="pb-title">KB국민 컨설팅 운영 프로젝트</p>
+          <p class="pb-period">2025. 05 ~ 2025. 12</p>
+          <p class="pb-desc">KB국민은행 고객경험디자인센터에 파견되어 UX 리서처로 근무하며, 모바일 금융 서비스 전반에 대한 사용자 조사 업무를 수행했습니다. 조사 시나리오 설계, 참여자 리쿠르팅, 조사 진행, 데이터 분석 및 결과 보고서 작성까지 UX 리서치 전 과정에 참여했습니다.</p>
+          <div class="pb-group">
+            <p class="pb-group-title">주요 프로젝트</p>
+            <ul class="pb-list">
+              <li>중고차 서비스 KB차차차 앱 개선안 검증 (UT 6명)</li>
+              <li>송금/이체 UX라이팅 인식 조사 (온라인 설문 700명)</li>
+              <li>KB스타뱅킹 전체메뉴 개선안 검증 조사 (온라인 설문 / FCT 300명)</li>
+              <li>개인사업자 세무 관련 심층인터뷰 (심층인터뷰 8명)</li>
+              <li>경리 대상 ERP프로그램 이용 경험 조사 (심층인터뷰 6명)</li>
+              <li>BaaS형 금융솔루션 심층인터뷰 (심층인터뷰 8명)</li>
+            </ul>
+          </div>
+          <div class="pb-group">
+            <p class="pb-group-title">주요 업무</p>
+            <ul class="pb-list">
+              <li>사용자 조사 진행 가이드 및 시나리오 설계</li>
+              <li>리크루팅 설문 설계 및 조사 참여자 컨택</li>
+              <li>프로토타입 및 실험물 제작</li>
+              <li>조사 결과 분석</li>
+              <li>사용자 조사 결과 보고서 작성</li>
+              <li>Raw Data 정리</li>
+            </ul>
+          </div>
+          <div class="pb-group">
+            <p class="pb-group-title">업무 성과</p>
+            <ul class="pb-list">
+              <li>KB국민은행 서비스 고도화 및 개선 방향 수립을 위한 사용자 인사이트 도출 및 전달</li>
+              <li>KB국민은행 주요 앱 서비스의 사용성 및 효용성 검증</li>
+              <li>조사 결과를 기반으로 스타뱅킹 서비스에 반영 (송금·이체 UX 라이팅 기준 수립 / KB스타뱅킹 전체메뉴 개선)</li>
+              <li>참여한 모든 프로젝트에서 고객사 평가 우수(A) 등급 획득</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 현대자동차 -->
+      <div class="project-block">
+        <p class="pb-idx">Project 04</p>
+        <div class="pb-content">
+          <p class="pb-title">현대자동차 Entry/Exit 사용자 리서치 제안 리딩</p>
+          <p class="pb-period">2025. 04 ~ 2025. 04</p>
+          <p class="pb-desc">자동차 산업의 디지털 전환 가속에 따라, HPVC가 적용되는 SDV 차량의 승하차 과정의 사용자 시나리오를 도출하기 위한 UX리서치 방법론을 제안하였습니다.</p>
+          <div class="pb-group">
+            <p class="pb-group-title">주요 업무</p>
+            <ul class="pb-list">
+              <li>제안서 제작 및 리딩</li>
+              <li>디자인 씽킹 프로세스 기반의 UX 리서치 방법론 제안</li>
+            </ul>
+          </div>
+          <div class="pb-group">
+            <p class="pb-group-title">업무 성과</p>
+            <ul class="pb-list">
+              <li>제안 수주는 실패하였으나, 고객사 측에서 가장 높은 점수의 제안 평가를 받음</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      </div><!-- /projects-wrap -->
+    </div><!-- /바이널씨 -->
+
+    <!-- SDE Lab -->
+    <div id="cb-sde" class="reveal">
+      <div class="company-banner">
+        <div class="cb-left">
+          <p class="cb-period-label">근무기간</p>
+          <p class="cb-period-val">2024. 05<br>~ 2025. 03</p>
+        </div>
+        <div class="cb-right">
+          <p class="cb-company">SDE Lab.</p>
+          <p class="cb-role">홍익대학교 서비스경험디자인 연구소 · 선임연구원</p>
+        </div>
+      </div>
+
+      <div class="projects-wrap">
+
+      <!-- Z세대 버추얼 휴먼 -->
+      <div class="project-block">
+        <p class="pb-idx">Project 01</p>
+        <div class="pb-content">
+          <p class="pb-title">한국연구재단 &lt;신진연구자지원사업&gt; Z세대 버추얼 휴먼 연구</p>
+          <p class="pb-period">2024. 05 ~ 2025. 07</p>
+          <p class="pb-desc">리테일 매장 내 피지털 전략으로서 디지털 휴먼 고객 경험 디자인 연구를 진행하였습니다. 특히 디지털 휴먼의 가상성 수준과 기술의 상호작용성 수준 차이에 따른 영향을 중심으로, 피지털 경험 요인이 고객 몰입 및 지속 사용 의도에 미치는 영향을 실증적으로 분석하였습니다. 최종적으로, 피지털 경험 요인에 따른 디지털 휴먼 설계 가이드라인을 제안하였습니다.</p>
+          <div class="pb-group">
+            <p class="pb-group-title">주요 업무</p>
+            <ul class="pb-list">
+              <li>교신저자 외 단독 1저자로서 연구 전반 주도</li>
+              <li>연구 실험을 위한 디지털 휴먼 시나리오 및 프로토타입 제작</li>
+              <li>사용자 조사 설계 및 진행 (온라인 설문 214명)</li>
+              <li>통계 분석 및 디지털 휴먼 전략 수립</li>
+            </ul>
+          </div>
+          <div class="pb-group">
+            <p class="pb-group-title">업무 성과</p>
+            <ul class="pb-list">
+              <li>한국디자인학회(SCOPUS등재지) 게재 (2025. 8월 게재 확정)</li>
+              <li>디지털 휴먼 기반 피지털 전략 설계 시 고려해야 할 핵심 요인 구조화</li>
+              <li>리테일 매장 내 디지털 휴먼 전략 수립 프로세스 및 페르소나 설계를 위한 프레임워크 제시</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 디자인진흥원 -->
+      <div class="project-block">
+        <p class="pb-idx">Project 02</p>
+        <div class="pb-content">
+          <p class="pb-title">디자인진흥원 &lt;지속가능디자인지원사업&gt; 서비스 디자인 컨설팅</p>
+          <p class="pb-period">2024. 06 ~ 2024. 12</p>
+          <p class="pb-desc">유아 교구 전문 제작 브랜드 '이용이'를 위한 서비스 디자인 컨설팅을 진행하였습니다. 팀 내 유일한 실무자로서 프로젝트 전반의 실무 업무 및 클라이언트 커뮤니케이션을 주도적으로 수행하였습니다.</p>
+          <div class="pb-group">
+            <p class="pb-group-title">주요 업무</p>
+            <ul class="pb-list">
+              <li>디자인 씽킹 및 서비스 디자인 프로세스에 다른 컨설팅 계획 및 진행</li>
+              <li>사용자 조사 설계 및 진행 (관찰 조사, IDI, 코크리에이션 워크숍, 프로토타입 검증 등)</li>
+              <li>서비스디자인 프로세스에 따른 디자인 산출물 제작 (페르소나, 여정맵, 콘셉트브리프, 시나리오 등)</li>
+              <li>프로토타입 UX/UI 디자인</li>
+              <li>결과 보고서 작성</li>
+              <li>기업 및 디자인진흥원과의 커뮤니케이션 수행</li>
+            </ul>
+          </div>
+          <div class="pb-group">
+            <p class="pb-group-title">업무 성과</p>
+            <ul class="pb-list">
+              <li>단순 교구 판매를 넘어 교구 플랫폼으로서 전환하기 위한 비즈니스 모델 재정의</li>
+              <li>사용자 중심 핵심 문제 재정의 및 서비스 전략 방향성 도출</li>
+              <li>프로토타입, 제품 포트폴리오, 콘텐츠 로드맵을 통한 전략 구체화</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      </div><!-- /projects-wrap -->
+    </div><!-- /SDE Lab -->
+
+    <!-- 더씨이드 -->
+    <div id="cb-dcide" class="reveal">
+      <div class="company-banner">
+        <div class="cb-left">
+          <p class="cb-period-label">근무기간</p>
+          <p class="cb-period-val">2024. 01<br>~ 2024. 10</p>
+        </div>
+        <div class="cb-right">
+          <p class="cb-company">더씨이드</p>
+          <p class="cb-role">연구보조원 (프리랜서)</p>
+        </div>
+      </div>
+
+      <div class="projects-wrap">
+
+      <!-- 여수세계박람회장 -->
+      <div class="project-block">
+        <p class="pb-idx">Project 01</p>
+        <div class="pb-content">
+          <p class="pb-title">여수세계박람회장 안내·안전 사인 체계 개선 사업</p>
+          <p class="pb-period">2024. 08 ~ 2024. 10</p>
+          <p class="pb-desc">여수세계박람회장 사이니지 체계 재정비를 위해, 디자인 리서치를 담당하여 현재 여수세계박람회장의 문제점을 도출하고, 사용자 중심의 안내 체계 디자인 전략을 제안하였습니다.</p>
+          <div class="pb-group">
+            <p class="pb-group-title">주요 업무</p>
+            <ul class="pb-list">
+              <li>여수엑스포 기초조사, 현장조사를 통한 문제점 도출</li>
+              <li>페르소나 및 실내/실외 길찾기 중심 여정맵 설계</li>
+              <li>안내표지 설치 위치, 유형 등 사용자 중심 안내체계 디자인 전략 제안</li>
+            </ul>
+          </div>
+          <div class="pb-group">
+            <p class="pb-group-title">업무 성과</p>
+            <ul class="pb-list">
+              <li>여수엑스포 안내·안전 사인체계 디자인 가이드라인 수립</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 국립순천대학교 -->
+      <div class="project-block">
+        <p class="pb-idx">Project 02</p>
+        <div class="pb-content">
+          <p class="pb-title">국립순천대학교 캠퍼스 안전인프라 제작설치 사업</p>
+          <p class="pb-period">2024. 01 ~ 2024. 07</p>
+          <p class="pb-desc">국립순천대학교 캠퍼스 내 안전인프라 구축을 위한 과업에 참여하여, 사용자 조사 및 디자인 리서치 보조를 담당하였습니다. 대상지의 전체 환경을 분석하기 위한 필드리서치, 실제 대상지에서 활동하는 사용자의 의견을 수렴하기 위한 유저리서치 등을 진행하였으며, 이를 바탕으로 디자인 전략을 제안하였습니다.</p>
+          <div class="pb-group">
+            <p class="pb-group-title">주요 업무</p>
+            <ul class="pb-list">
+              <li>국립 순천대학교 캠퍼스 필드리서치</li>
+              <li>캠퍼스 내 범죄/사고 노출 위험 지역 파악을 위한 사용자 조사 설계 (온라인 설문 600명)</li>
+              <li>안전지도 제작을 위한 사용자 워크숍 퍼실리테이터 참여</li>
+              <li>사용자 조사 정량·정성 데이터 분석</li>
+              <li>브랜드 아이덴티티 디자인 시안 및 픽토그램 제작</li>
+            </ul>
+          </div>
+          <div class="pb-group">
+            <p class="pb-group-title">업무 성과</p>
+            <ul class="pb-list">
+              <li>SCNU Safety 디자인 전략 및 가이드라인 수립</li>
+              <li>제안한 안전인프라 구축 전략에 따라 시설물 설치 예정</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      </div><!-- /projects-wrap -->
+    </div><!-- /더씨이드 -->
+
+    <!-- 덧셈컴퍼니 -->
+    <div id="cb-dotsum" class="reveal">
+      <div class="company-banner">
+        <div class="cb-left">
+          <p class="cb-period-label">근무기간</p>
+          <p class="cb-period-val">2023. 08<br>~ 2023. 09</p>
+        </div>
+        <div class="cb-right">
+          <p class="cb-company">덧셈컴퍼니</p>
+          <p class="cb-role">UXUI 디자이너 (프리랜서)</p>
+        </div>
+      </div>
+
+      <div class="projects-wrap">
+      <div class="project-block">
+        <p class="pb-idx">Project 01</p>
+        <div class="pb-content">
+          <p class="pb-title">세금 환급 서비스 '덧셈' MVP 서비스 출시</p>
+          <p class="pb-desc">기획자, 개발자와 함께 UX/UI 디자이너로서 세금 환급을 위한 맞춤형 세무사 매칭 서비스 '덧셈' 출시를 준비하였습니다. 팀 내 유일한 디자이너로서 브랜드 아이덴티티와 앱 전반의 화면 설계를 모두 진행하였습니다.</p>
+          <div class="pb-group">
+            <p class="pb-group-title">주요 업무</p>
+            <ul class="pb-list">
+              <li>세금 환급 서비스 '덧셈' 앱 출시를 위한 유저 플로우 및 UI 화면 설계</li>
+              <li>덧셈 브랜드 아이덴티티 디자인</li>
+            </ul>
+          </div>
+          <div class="pb-group">
+            <p class="pb-group-title">업무 성과</p>
+            <ul class="pb-list">
+              <li>MVP 버전 출시 (iOS, 안드로이드)</li>
+              <li>2024년 기준 무료 인기앱 순위 10위 진입</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      </div><!-- /projects-wrap -->
+    </div><!-- /덧셈컴퍼니 -->
+
+  </section>
+
+  <!-- ══════════════════════════════════
+       연구논문실적
+  ══════════════════════════════════ -->
+  <section class="section" id="publications">
+    <p class="section-label reveal">연구논문실적</p>
+
+    <div class="reveal delay-1">
+      <div class="pub-item">
+        <div class="pub-date">2025. 08<br>(게재 예정)</div>
+        <div>
+          <p class="pub-title">피지털 경험 요인에 따른 디지털 휴먼 페르소나 설계 전략: 가상성과 상호작용성을 중심으로</p>
+          <p class="pub-meta">단독 1저자 · 한국디자인학회 (ADR)</p>
+        </div>
+        <div class="pub-badge-wrap">
+          <span class="td-badge">SCOPUS</span>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-date">2024. 08</div>
+        <div>
+          <p class="pub-title">멀티모달 청사진 기반 DX 박물관 전략 연구: Z세대를 중심으로</p>
+          <p class="pub-meta">제 1저자 · 한국디자인학회 (ADR)</p>
+        </div>
+        <div class="pub-badge-wrap">
+          <span class="td-badge">SCOPUS</span>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-date">2023. 08</div>
+        <div>
+          <p class="pub-title">Z세대 금융 마이데이터 인식 제고를 위한 사용자 경험 연구</p>
+          <p class="pub-meta">제 1저자 · 차세대컨버전스정보기술논문지 (JNCIST)</p>
+        </div>
+        <div class="pub-badge-wrap">
+          <span class="td-badge">KCI</span>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-date">2022. 12</div>
+        <div>
+          <p class="pub-title">A Study on the User Experience to Improve Immersion as a Digital Human in Lifestyle Content</p>
+          <p class="pub-meta">제 5저자 · MDPI</p>
+        </div>
+        <div class="pub-badge-wrap">
+          <span class="td-badge">SCI</span>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-date">2022. 12</div>
+        <div>
+          <p class="pub-title">웹툰 기반 UI애니메이션에 따른 사용자 경험 연구: 네이버 웹툰과 카카오 웹툰을 중심으로</p>
+          <p class="pub-meta">제 1저자 · 차세대컨버전스정보기술논문지 (JNCIST)</p>
+        </div>
+        <div class="pub-badge-wrap">
+          <span class="td-badge">KCI</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       자격 / 수상
+  ══════════════════════════════════ -->
+  <section class="section" id="awards">
+    <p class="section-label reveal">자격 / 수상</p>
+
+    <table class="data-table reveal delay-1">
+      <thead>
+        <tr>
+          <th>취득일</th>
+          <th>종류</th>
+          <th>점수</th>
+          <th>기관</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2024. 11</td>
+          <td>(자격) 서비스경험디자인기사자격증</td>
+          <td>최종합격</td>
+          <td>디자인진흥원</td>
+        </tr>
+        <tr>
+          <td>2020. 09</td>
+          <td>(수상) K-Design Award'20</td>
+          <td>Grand Prize</td>
+          <td>K-Design Award</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ══════════════════════════════════
+       경험 / 활동
+  ══════════════════════════════════ -->
+  <section class="section" id="activities">
+    <p class="section-label reveal">경험 / 활동</p>
+
+    <div class="reveal delay-1">
+      <div class="act-row">
+        <div class="act-date">2025. 03</div>
+        <div class="act-name">신한 커리어업</div>
+        <div class="act-detail">
+          <ul>
+            <li>쏙 컴퍼니 신입사원 입서(UX/UI 디자인)</li>
+            <li>과정 이수 중 취업 확정으로 인한 중도 수료</li>
+          </ul>
+        </div>
+        <div class="act-type">—</div>
+      </div>
+
+      <div class="act-row">
+        <div class="act-date">2023. 09 ~ 2023. 12</div>
+        <div class="act-name">HP 스페인 산학협력 프로그램</div>
+        <div class="act-detail">
+          <ul>
+            <li>HP SitePrint 디자인 개선 방향 제안</li>
+          </ul>
+        </div>
+        <div class="act-type">산학</div>
+      </div>
+
+      <div class="act-row">
+        <div class="act-date">2023. 02 ~ 2023. 08</div>
+        <div class="act-name">프랑스 교환학생 프로그램</div>
+        <div class="act-detail">
+          <ul>
+            <li>L'école de Design, 디지털 미디어 디자인 전공</li>
+          </ul>
+        </div>
+        <div class="act-type">해외연수</div>
+      </div>
+
+      <div class="act-row">
+        <div class="act-date">2022. 08</div>
+        <div class="act-name">듀오 피터빈 Op.4</div>
+        <div class="act-detail">
+          <ul>
+            <li>포스터 &amp; 팜플렛 디자인</li>
+          </ul>
+        </div>
+        <div class="act-type">아르바이트</div>
+      </div>
+
+      <div class="act-row">
+        <div class="act-date">2021. 03 ~ 2021. 11</div>
+        <div class="act-name">가천대학교 시각디자인학과 졸업준비위원장</div>
+        <div class="act-detail">
+          <ul>
+            <li>졸업전시 총괄 및 책임</li>
+            <li>브랜드 아이덴티티 디자인 및 디자인 가이드 제안</li>
+            <li>온라인 졸업전시 웹사이트 디자인</li>
+          </ul>
+        </div>
+        <div class="act-type">교내활동</div>
+      </div>
+
+      <div class="act-row">
+        <div class="act-date">2020. 07</div>
+        <div class="act-name">앤젤핵(Angelhack) 해커톤 2020</div>
+        <div class="act-detail">
+          <ul>
+            <li>UX/UI 디자이너로서 앱 서비스 기획 및 화면 설계 디자인</li>
+            <li>개발자와 협업 및 안드로이드 베타 서비스 출시</li>
+          </ul>
+        </div>
+        <div class="act-type">—</div>
+      </div>
+
+      <div class="act-row">
+        <div class="act-date">2020. 07 ~ 2021. 02</div>
+        <div class="act-name">이수연 국어</div>
+        <div class="act-detail">
+          <ul>
+            <li>온라인 국어 교재 및 수업 자료 디자인</li>
+            <li>PPT 제작</li>
+          </ul>
+        </div>
+        <div class="act-type">아르바이트</div>
+      </div>
+
+      <div class="act-row">
+        <div class="act-date">2020. 03 ~ 2020. 06</div>
+        <div class="act-name">대교 마케팅팀 프로모션 디자인</div>
+        <div class="act-detail">
+          <ul>
+            <li>상세페이지 및 배너 디자인</li>
+            <li>SNS 마케팅 콘텐츠 디자인</li>
+          </ul>
+        </div>
+        <div class="act-type">아르바이트</div>
+      </div>
+
+      <div class="act-row">
+        <div class="act-date">2019. 07 ~ 2019. 08</div>
+        <div class="act-name">영국 어학 단기 연수</div>
+        <div class="act-detail">
+          <ul>
+            <li>Wolverhampton Univ.</li>
+          </ul>
+        </div>
+        <div class="act-type">해외연수</div>
+      </div>
+
+      <div class="act-row">
+        <div class="act-date">2017. 09 ~ 2022. 02</div>
+        <div class="act-name">가천대 시각디자인 동아리 OLGA</div>
+        <div class="act-detail">
+          <ul>
+            <li>동아리 워크숍 기획 및 운영</li>
+            <li>포토샵 / 일러스트 스터디 운영</li>
+            <li>동아리 전시 '분해전' 참여 (2018. 03)</li>
+          </ul>
+        </div>
+        <div class="act-type">교내활동</div>
+      </div>
+
+      <div class="act-row">
+        <div class="act-date">2017. 08 ~ 2023. 01</div>
+        <div class="act-name">G1로드원 강사</div>
+        <div class="act-detail">
+          <ul>
+            <li>입시 미술학원 보조강사</li>
+          </ul>
+        </div>
+        <div class="act-type">아르바이트</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       활용 능력
+  ══════════════════════════════════ -->
+  <section class="section" id="skills">
+    <p class="section-label reveal">활용 능력</p>
+
+    <div class="reveal delay-1">
+      <div class="skill-row">
+        <div class="skill-cat">프로토타이핑</div>
+        <div class="skill-tools">Figma, Adobe XD</div>
+        <div class="skill-level high">고급</div>
+        <div class="skill-desc">컴포넌트 시스템 구축 및 Hi-Fi 프로토타입 제작 · 마이크로 인터랙션 설계</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-cat">AI</div>
+        <div class="skill-tools">Perplexity, Claude, Midjourney, Liner, ChatGPT, Stitch, Claude</div>
+        <div class="skill-level high">고급</div>
+        <div class="skill-desc">wiki기반 협업 환경 구축 및 업무 효율화 · 바이브 코딩을 통한 업무 툴킷 제작 (데이터 시각화 등) · Hi-fi MVP제작을 통한 프로토타입 검증 · 컨셉 이미지 제작 및 시나리오 기반 시각화</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-cat">비주얼/그래픽</div>
+        <div class="skill-tools">Photoshop, Illustrator, InDesign</div>
+        <div class="skill-level high">고급</div>
+        <div class="skill-desc">이미지 보정 및 그래픽 디자인 · 보고서 및 문서 레이아웃 디자인</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-cat">영상 / 모션</div>
+        <div class="skill-tools">Premiere Pro, After Effects</div>
+        <div class="skill-level">중급</div>
+        <div class="skill-desc">기본적인 영상 편집 및 모션 작업</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-cat">문서</div>
+        <div class="skill-tools">PowerPoint, Word</div>
+        <div class="skill-level high">고급</div>
+        <div class="skill-desc">보고서, 기획서 등 문서화 작업</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-cat">웹 퍼블리싱</div>
+        <div class="skill-tools">HTML5, CSS3, Bootstrap</div>
+        <div class="skill-level">중급</div>
+        <div class="skill-desc">웹 퍼블리싱 개발 언어 이해 · Hi-Fi 프로토타입을 위한 웹 제작</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-cat">리서치 / 데이터</div>
+        <div class="skill-tools">SPSS, Excel, Amplitude</div>
+        <div class="skill-level">중급</div>
+        <div class="skill-desc">설문 설계 및 데이터 정리 · 설문 통계 및 정량·정성 데이터 분석</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-cat">협업 / 커뮤니케이션</div>
+        <div class="skill-tools">Miro, Slack, Notion</div>
+        <div class="skill-level">중급</div>
+        <div class="skill-desc">설문 설계 및 데이터 정리 · 설문 통계 및 정량·정성 데이터 분석</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-cat">3D</div>
+        <div class="skill-tools">Cinema 4D, Spline</div>
+        <div class="skill-level">초급</div>
+        <div class="skill-desc">단순 3D 렌더링 및 모션 작업</div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page -->
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span class="ft-name">이아현 — UX Designer &amp; Consultant</span>
+  <span class="ft-right">2026 Ahhyun UX Portfolio · 경력기술서</span>
+</footer>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); revealObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.06 });
+  reveals.forEach(el => revealObs.observe(el));
+
+  // Company scrollspy
+  const spy = document.getElementById('company-spy');
+  const careerSection = document.getElementById('career-detail');
+  const companies = [
+    { id: 'cb-vinyl',  btn: spy.querySelector('[href="#cb-vinyl"]') },
+    { id: 'cb-sde',    btn: spy.querySelector('[href="#cb-sde"]') },
+    { id: 'cb-dcide',  btn: spy.querySelector('[href="#cb-dcide"]') },
+    { id: 'cb-dotsum', btn: spy.querySelector('[href="#cb-dotsum"]') },
+  ];
+
+  function updateSpy() {
+    const sectionTop = careerSection.getBoundingClientRect().top;
+    const sectionBot = careerSection.getBoundingClientRect().bottom;
+    const inSection = sectionTop < 120 && sectionBot > 110;
+    spy.classList.toggle('visible', inSection);
+
+    if (!inSection) return;
+
+    let active = null;
+    for (const c of companies) {
+      const el = document.getElementById(c.id);
+      if (!el) continue;
+      if (el.getBoundingClientRect().top < 130) active = c;
+    }
+    companies.forEach(c => c.btn.classList.toggle('active', c === active));
+  }
+
+  window.addEventListener('scroll', updateSpy, { passive: true });
+  updateSpy();
+</script>
+</body>
+</html>
