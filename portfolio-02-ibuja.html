@@ -219,8 +219,8 @@
        SEC 02 — PROJECT INFO
     ══════════════════════ */
     #sec-info {
-      background: var(--white);
-      padding: 40px 0 0;
+      background: var(--gray50);
+      padding: 100px 0;
     }
     .info-desc {
       font-size: 40px;
@@ -317,7 +317,8 @@
     ══════════════════════ */
     #sec-cols {
       background: #1A1C20;
-      padding: 80px 0 80px;
+      padding: 10px 0 80px;
+      box-shadow: 0 0 0 9999px #1A1C20;
     }
     #img01-wrap-1 img,
     #img01-wrap-2 img,
@@ -331,8 +332,8 @@
        SEC 05 — DISCOVER
     ══════════════════════ */
     #sec-discover {
-      background: var(--white);
-      padding: 100px 0;
+      background: var(--gray50);
+      padding: 250px 0;
     }
     .right-text {
       width: 1040px;
@@ -365,7 +366,7 @@
     ══════════════════════ */
     #sec-define {
       background: transparent;
-      padding: 100px 0;
+      padding: 250px 0;
     }
     .single-panel {
       margin-top: 60px;
@@ -386,7 +387,7 @@
     ══════════════════════ */
     #sec-concept {
       background: transparent;
-      padding: 120px 0 100px;
+      padding: 250px 0;
     }
     .concept-text {
       max-width: 680px;
@@ -424,7 +425,8 @@
     ══════════════════════ */
     #sec-ui1, #sec-ui2 {
       background: var(--dark);
-      padding: 100px 0;
+      padding: 250px 0;
+      box-shadow: 0 0 0 9999px var(--dark);
     }
     #sec-ui1 .inner, #sec-ui2 .inner { }
     .ui-text { max-width: 1080px; }
@@ -986,7 +988,7 @@
 <!-- ══════════════════════
      GRADIENT WRAPPER (Define → Concept)
 ══════════════════════ -->
-<div style="background: linear-gradient(180deg, rgba(246, 247, 249, 0.00) 0%, #A9B8FF 100%);">
+<div id="gradient-wrapper" style="background: linear-gradient(180deg, rgba(246, 247, 249, 0.00) 0%, #A9B8FF 100%); transition: opacity 0.6s ease;">
 
 <!-- ══════════════════════
      SEC 06 — DEFINE
@@ -1125,6 +1127,15 @@ function applyZoom() {
 }
 applyZoom();
 window.addEventListener('resize', applyZoom);
+
+// ── Gradient wrapper fade when Define section visible ──
+const gradWrapper = document.getElementById('gradient-wrapper');
+const defineSection = document.getElementById('sec-define');
+if (gradWrapper && defineSection) {
+  new IntersectionObserver(([e]) => {
+    gradWrapper.style.opacity = e.isIntersecting ? '0' : '1';
+  }, { threshold: 0.05 }).observe(defineSection);
+}
 
 // ── Progress bar ──
 const progressBar = document.getElementById('progress');
@@ -1380,6 +1391,9 @@ initParticles('canvas-confetti', 'confetti');
   <div class="ft-left">
     <p class="ft-name">이아현 — UX Designer &amp; Consultant</p>
     <p>하나은행 아이부자 UX 컨설팅 · 2026. 03 — 2026. 06</p>
+  </div>
+  <div class="ft-right">
+    <p>This portfolio was built with Claude Code by Anthropic</p>
   </div>
 </footer>
 
